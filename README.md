@@ -199,7 +199,111 @@ export default {
 </details>
 
 <details>
-<summary>11. ???</summary>
+<summary>11. У чому різниця між v-bind і v-model у Vue.js?</summary>
+
+#### Vue.js
+
+`v-bind` — одностороння прив’язка даних: передає значення зі стану в атрибут
+елемента або проп компонента.
+
+```jsx
+<img :src="imageUrl" />
+```
+
+`v-model` — двостороння прив’язка: синхронізує дані між станом і елементом
+форми/компонентом.
+
+```jsx
+<input v-model="username" />
+```
+
+Тобто v-bind = тільки з даних у DOM, а v-model = в обидві сторони (дані ⇆ DOM).
+
+</details>
+
+<details>
+<summary>12. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>13. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>14. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>15. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>16. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>17. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>18. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>19. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>20. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>21. ???</summary>
 
 #### Vue.js
 
