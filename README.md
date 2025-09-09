@@ -306,11 +306,24 @@ export default {
 </details>
 
 <details>
-<summary>15. ???</summary>
+<summary>15. Як у Vue.js прив’язувати інлайн-стилі в шаблоні?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+Інлайн-стилі задаються через v-bind:style (скорочено :style), приймаючи об’єкт
+або масив:
+
+```html
+<!-- Об’єкт -->
+<div :style="{ color: activeColor, fontSize: size + 'px' }"></div>
+
+<!-- Масив об’єктів -->
+<div :style="[baseStyle, overrideStyle]"></div>
+
+Також можна прив’язувати динамічні CSS-змінні:
+
+<div :style="{ '--main-color': color }"></div>
+```
 
 </details>
 
