@@ -583,11 +583,41 @@ export default {
 </details>
 
 <details>
-<summary>25. ???</summary>
+<summary>25. У Vue події створюються через $emit у дочірньому компоненті та слухаються у батьківському.</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+- Приклад:
+
+```html
+<!-- Child.vue -->
+<template>
+  <button @click="$emit('increment', 1)">+1</button>
+</template>
+
+<!-- Parent.vue -->
+<template>
+  <Child @increment="handleIncrement" />
+</template>
+
+<script>
+  export default {
+    methods: {
+      handleIncrement(value) {
+        console.log('Отримав від дитини:', value);
+      },
+    },
+  };
+</script>
+```
+
+- У Vue 3 бажано явно описувати події в опції emits:
+
+```js
+emits: ['increment'];
+```
+
+- Це робить код більш передбачуваним і зрозумілим.
 
 </details>
 
