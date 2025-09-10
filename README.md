@@ -478,7 +478,119 @@ export default {
 </details>
 
 <details>
-<summary>21. ???</summary>
+<summary>21. Як у Vue.js обробляти нативні події DOM?</summary>
+
+#### Vue.js
+
+Нативні події прив’язуються через директиву v-on або скорочення @:
+
+```html
+<button @click="handleClick">Клікни</button>
+```
+
+У дочірніх компонентах:
+
+- Якщо елемент емітить власні події (this.$emit), то слухаємо їх звичайно:
+
+```jsx
+<ChildComponent @customEvent="doSomething" />
+```
+
+- Якщо треба перехопити нативну подію DOM на root-елементі дочірнього компонента
+  (у Vue 2) — використовували .native модифікатор:
+
+```jsx
+<ChildComponent @click.native="handleClick" />
+```
+
+У Vue 3 .native прибрали, натомість треба явно прокидати події (emits) або
+вішати обробник напряму на елемент у шаблоні.
+
+</details>
+
+<details>
+<summary>22. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>23. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>24. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>25. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>26. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>27. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>28. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>29. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>30. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>31. ???</summary>
 
 #### Vue.js
 
