@@ -697,11 +697,25 @@ emits: ['increment'];
 </details>
 
 <details>
-<summary>29. ???</summary>
+<summary>29. У чому основні відмінності між v-bind та v-on у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+- `v-bind` — використовується для прив’язки даних до атрибутів або props.
+
+```html
+<img :src="imageUrl" /> <ChildComponent :title="pageTitle" />
+```
+
+- `v-on` — використовується для прив’язки обробників подій до елементів чи
+  компонентів.
+
+```html
+<button @click="handleClick">Клік</button>
+<ChildComponent @customEvent="doSomething" />
+```
+
+Коротко: v-bind = дані → атрибут, v-on = подія → метод.
 
 </details>
 
