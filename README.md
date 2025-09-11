@@ -896,29 +896,139 @@ Vue Router — це офіційна бібліотека маршрутизац
 </details>
 
 <details>
-<summary>37. ???</summary>
+<summary>37. Як налаштувати маршрутизацію (routing) у Vue.js-застосунку?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+1. Встановити Vue Router
+
+```bash
+npm install vue-router
+```
+
+2. Створити файл маршрутизації (router/index.js):
+
+```JavaScript
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../views/Home.vue'
+import About from '../views/About.vue'
+
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+export default router
+```
+
+3. Підключити router у main.js:
+
+```JavaScript
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App).use(router).mount('#app')
+```
+
+4. Використати router-link та router-view:
+
+```html
+<template>
+  <nav>
+    <router-link to="/">Home</router-link>
+    <router-link to="/about">About</router-link>
+  </nav>
+  <router-view />
+</template>
+```
+
+Це базове налаштування. Для реальних проєктів додають динамічні маршрути, lazy
+loading, guard’и.
 
 </details>
 
 <details>
-<summary>38. ???</summary>
+<summary>38. Як у Vue.js здійснюється навігація між сторінками?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+Є два основних способи:
+
+1. Декларативний — через компонент `<router-link>`:
+
+```html
+<router-link to="/about">About</router-link>
+```
+
+2. Програмний — через об’єкт router:
+
+```JavaScript
+this.$router.push('/about')      // Vue 2
+router.push('/about')            // Vue 3 (Composition API)
+```
+
+У Vue 3 з Composition API використовують useRouter():
+
+```JavaScript
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+router.push({ name: 'about' })
+```
 
 </details>
 
 <details>
-<summary>39. ???</summary>
+<summary>39. Що таке динамічний маршрут у Vue Router і як його створити?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+Динамічний маршрут — це маршрут із параметрами, які змінюються залежно від URL
+(наприклад, user/1, user/2).
+
+#### Створення:
+
+У файлі router/index.js:
+
+```JavaScript
+import { createRouter, createWebHistory } from 'vue-router'
+import User from '../views/User.vue'
+
+const routes = [
+  { path: '/user/:id', component: User }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+export default router
+```
+
+#### Доступ до параметра в компоненті:
+
+Options API:
+
+```JavaScript
+this.$route.params.id
+```
+
+Composition API:
+
+```JavaScript
+import { useRoute } from 'vue-router'
+const route = useRoute()
+console.log(route.params.id)
+```
+
+Використовується для сторінок профілю, деталей товарів, постів тощо.
 
 </details>
 
