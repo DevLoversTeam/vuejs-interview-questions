@@ -1033,11 +1033,57 @@ console.log(route.params.id)
 </details>
 
 <details>
-<summary>40. ???</summary>
+<summary>40. Як у Vue Router реалізуються вкладені (nested) маршрути?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+Вкладені маршрути дозволяють відображати дочірні компоненти всередині
+батьківського через <router-view>.
+
+#### Приклад конфігурації:
+
+```js
+import { createRouter, createWebHistory } from 'vue-router';
+import User from '../views/User.vue';
+import UserProfile from '../views/UserProfile.vue';
+import UserPosts from '../views/UserPosts.vue';
+
+const routes = [
+  {
+    path: '/user/:id',
+    component: User,
+    children: [
+      { path: 'profile', component: UserProfile },
+      { path: 'posts', component: UserPosts },
+    ],
+  },
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+export default router;
+```
+
+#### У компоненті User.vue:
+
+```html
+<template>
+  <div>
+    <h2>User {{ $route.params.id }}</h2>
+    <router-link :to="`/user/${$route.params.id}/profile`">Profile</router-link>
+    <router-link :to="`/user/${$route.params.id}/posts`">Posts</router-link>
+
+    <!-- Тут рендеряться дочірні -->
+    <router-view />
+  </div>
+</template>
+```
+
+Це зручно для побудови ієрархій сторінок: профіль користувача → налаштування →
+пости.
 
 </details>
 
