@@ -751,7 +751,113 @@ export default {
 </details>
 
 <details>
-<summary>31. ???</summary>
+<summary>31. Що таке Vuex і для чого він використовується?</summary>
+
+#### Vue.js
+
+Vuex — це офіційна бібліотека для глобального управління станом у Vue 2/3. Вона
+базується на концепції єдиного сховища (store) з чіткими правилами зміни даних.
+
+**Основні частини:**
+
+- `state` — глобальні дані
+
+- `getters` — обчислені властивості над state
+
+- `mutations` — синхронні зміни state
+
+- `actions` — асинхронна логіка, що викликає mutations
+
+- `modules` — поділ стану на частини
+
+У Vue 3 новим стандартом стала Pinia, але Vuex ще часто зустрічається у великих
+проєктах.
+
+</details>
+
+<details>
+<summary>32. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>33. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>34. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>35. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>36. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>37. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>38. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>39. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>40. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>41. ???</summary>
 
 #### Vue.js
 
