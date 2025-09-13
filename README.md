@@ -1225,11 +1225,41 @@ app.mount('#app')
 </details>
 
 <details>
-<summary>44. ???</summary>
+<summary>44. Як зареєструвати глобальну директиву у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+У Vue 3 глобальні директиви реєструють через app.directive(). Вони стають
+доступними в усіх компонентах додатку.
+
+#### Приклад:
+
+```JavaScript
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+
+const app = createApp(App)
+
+// реєстрація глобальної директиви v-focus
+app.directive('focus', {
+  mounted(el) {
+    el.focus()
+  }
+})
+
+app.mount('#app')
+```
+
+#### Використання у будь-якому компоненті:
+
+```html
+<template>
+  <input v-focus />
+</template>
+```
+
+- У Vue 2 це робилось через Vue.directive('focus', { ... }).
 
 </details>
 
