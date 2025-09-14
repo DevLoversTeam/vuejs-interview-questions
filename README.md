@@ -2939,11 +2939,82 @@ app.mount('#app')
 </details>
 
 <details>
-<summary>81. ???</summary>
+<summary>81. Як організувати роботу з API-запитами у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+1. **HTTP-клієнт:**
+
+- Найчастіше використовують Axios або fetch.
+
+- Axios можна підключити як плагін для глобального доступу.
+
+2. **Організація коду:**
+
+- Виносити API-запити у сервіси/утиліти (наприклад, api/userService.js).
+
+- Використовувати composables (useUsers.js) у Vue 3 для повторного використання
+  логіки.
+
+3. **Приклад (Vue 3, Composition API + Axios):**
+
+```JavaScript
+// services/userService.js
+import axios from 'axios'
+
+export async function fetchUsers() {
+  const { data } = await axios.get('/api/users')
+  return data
+}
+```
+
+```JavaScript
+// composables/useUsers.js
+import { ref, onMounted } from 'vue'
+import { fetchUsers } from '../services/userService'
+
+export function useUsers() {
+  const users = ref([])
+  const loading = ref(false)
+
+  const loadUsers = async () => {
+    loading.value = true
+    users.value = await fetchUsers()
+    loading.value = false
+  }
+
+  onMounted(loadUsers)
+
+  return { users, loading, loadUsers }
+}
+```
+
+```html
+<!-- UserList.vue -->
+<template>
+  <div v-if="loading">Loading...</div>
+  <ul v-else>
+    <li v-for="u in users" :key="u.id">{{ u.name }}</li>
+  </ul>
+</template>
+
+<script setup>
+  import { useUsers } from '../composables/useUsers';
+  const { users, loading } = useUsers();
+</script>
+```
+
+4. **Стан:**
+
+- Для глобального стану краще використовувати Pinia (Vuex у старих проєктах).
+
+5. **Поради:**
+
+- Обробляти помилки через try/catch.
+
+- Використовувати інтерсептори Axios для токенів (авторизація).
+
+- Кешувати або мемоізувати часті запити.
 
 </details>
 
