@@ -2077,11 +2077,68 @@ div {
 </details>
 
 <details>
-<summary>64. ???</summary>
+<summary>64. Як створювати анімації за допомогою JavaScript у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+У Vue.js можна використовувати JavaScript hooks у <transition> або
+<transition-group>, замість CSS-класів. Це дозволяє анімувати властивості вручну
+через JS.
+
+#### Приклад (Vue 3, Composition API):
+
+```html
+<template>
+  <button @click="show = !show">Toggle</button>
+  <transition @before-enter="beforeEnter" @enter="enter" @leave="leave">
+    <p v-if="show">Hello Vue!</p>
+  </transition>
+</template>
+
+<script setup>
+  import { ref } from 'vue';
+
+  const show = ref(false);
+
+  function beforeEnter(el) {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(-20px)';
+  }
+
+  function enter(el, done) {
+    const animation = el.animate(
+      [
+        { opacity: 0, transform: 'translateY(-20px)' },
+        { opacity: 1, transform: 'translateY(0)' },
+      ],
+      {
+        duration: 500,
+      }
+    );
+    animation.onfinish = done;
+  }
+
+  function leave(el, done) {
+    const animation = el.animate(
+      [
+        { opacity: 1, transform: 'translateY(0)' },
+        { opacity: 0, transform: 'translateY(-20px)' },
+      ],
+      { duration: 500 }
+    );
+    animation.onfinish = done;
+  }
+</script>
+```
+
+#### Особливості:
+
+- `@before-enter`, `@enter`, `@leave` – основні хуки для JS-анімацій.
+
+- `done` викликається після завершення анімації, щоб Vue завершив перехід.
+
+- Можна використовувати **Web Animations API** або сторонні бібліотеки (GSAP,
+  Anime.js).
 
 </details>
 
