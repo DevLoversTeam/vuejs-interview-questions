@@ -3240,11 +3240,41 @@ SFC — це компонент Vue в одному файлі з розшире
 </details>
 
 <details>
-<summary>87. ???</summary>
+<summary>87. Опишіть структуру Single File Component (SFC) у Vue.js.</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+Файл .vue зазвичай має три основні блоки:
+
+`<template>` – описує розмітку компонента.
+
+`<script>` / `<script setup>` – містить логіку (стан, методи, імпорти).
+
+`<style>` – стилі, які можна обмежити через scoped або використовувати
+препроцесори (lang="scss").
+
+Додатково можна мати кілька стилів, глобальні стилі, або використати TypeScript
+у `<script lang="ts">`.
+
+Приклад:
+
+```html
+<template>
+  <div class="card">{{ message }}</div>
+</template>
+
+<script setup>
+  import { ref } from 'vue';
+  const message = ref('Hello from SFC');
+</script>
+
+<style scoped>
+  .card {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+</style>
+```
 
 </details>
 
