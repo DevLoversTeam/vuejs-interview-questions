@@ -1508,11 +1508,45 @@ const FunctionalComponent = (props) => h('p', props.text)
 </details>
 
 <details>
-<summary>52. ???</summary>
+<summary>52. Як використовувати provide та inject у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+`provide` і `inject` дозволяють передавати дані від батьківського компонента до
+будь-якого нащадка на будь-якому рівні ієрархії без пропсів.
+
+#### Приклад (Vue 3, Composition API):
+
+```JavaScript
+// Parent.vue
+import { provide, ref } from 'vue'
+
+export default {
+  setup() {
+    const user = ref('Andriy')
+    provide('user', user)
+  }
+}
+
+// Child.vue
+import { inject } from 'vue'
+
+export default {
+  setup() {
+    const user = inject('user')
+    return { user }
+  },
+  template: `<p>User: {{ user }}</p>`
+}
+```
+
+#### Особливості:
+
+- `provide` визначає ключ і значення для передачі.
+
+- `inject` отримує значення за ключем.
+
+- Дані реактивні, якщо передавати ref або reactive.
 
 </details>
 
