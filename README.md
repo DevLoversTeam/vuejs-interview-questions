@@ -1906,7 +1906,530 @@ export default {
 </details>
 
 <details>
-<summary>61. ???</summary>
+<summary>61. Як Vue.js обробляє анімації та переходи (transitions)?</summary>
+
+#### Vue.js
+
+Vue.js має вбудовану систему для плавних вставок, видалень і зміни стану
+елементів через компонент `<transition>` і `<transition-group>`.
+
+#### Основні моменти:
+
+1. `<transition>` – для одного елемента чи компонента.
+
+2. `<transition-group>` – для списків і груп елементів.
+
+3. Vue автоматично додає CSS-класи на різних етапах анімації:
+
+- `v-enter`, `v-enter-active`, `v-enter-to`
+
+- `v-leave`, `v-leave-active`, `v-leave-to`
+
+#### Приклад:
+
+```html
+<template>
+  <transition name="fade">
+    <p v-if="show">Hello Vue!</p>
+  </transition>
+</template>
+
+<script setup>
+  import { ref } from 'vue';
+  const show = ref(true);
+</script>
+
+<style>
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-enter-to,
+  .fade-leave-from {
+    opacity: 1;
+  }
+</style>
+```
+
+#### Особливості:
+
+- Можна використовувати CSS-анімації або JavaScript hooks (beforeEnter, enter,
+  leave тощо).
+
+- `<transition-group>` додає анімацію для списків з ключами (key) для коректного
+  відстеження елементів.
+
+</details>
+
+<details>
+<summary>62. Як застосувати анімацію/переходи до списку елементів у Vue.js?</summary>
+
+#### Vue.js
+
+Для списків використовується компонент <transition-group>, який дозволяє
+анімувати вставку, видалення або переміщення елементів у списку.
+
+#### Приклад:
+
+```html
+<template>
+  <button @click="addItem">Add Item</button>
+  <transition-group name="list" tag="ul">
+    <li v-for="item in items" :key="item.id">{{ item.text }}</li>
+  </transition-group>
+</template>
+
+<script setup>
+  import { ref } from 'vue';
+
+  const items = ref([
+    { id: 1, text: 'Item 1' },
+    { id: 2, text: 'Item 2' },
+  ]);
+
+  function addItem() {
+    const id = items.value.length + 1;
+    items.value.push({ id, text: `Item ${id}` });
+  }
+</script>
+
+<style>
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.5s;
+  }
+  .list-enter-from,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .list-enter-to,
+  .list-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+```
+
+#### Особливості:
+
+- Кожен елемент повинен мати унікальний key.
+
+- `<transition-group>` автоматично додає CSS-класи для етапів enter та leave.
+
+- Можна анімувати позицію, opacity, масштаб або застосовувати
+  JavaScript-анімації.
+
+</details>
+
+<details>
+<summary>63. У чому різниця між CSS transitions і CSS animations?</summary>
+
+#### Vue.js
+
+| Властивість   | CSS Transitions                                 | CSS Animations                                         |
+| ------------- | ----------------------------------------------- | ------------------------------------------------------ |
+| Запуск        | Відбувається при зміні стану (hover, class, JS) | Запускається автоматично або через keyframes           |
+| Контроль часу | Один раз на подію                               | Можна повторювати (infinite), задавати затримки, цикли |
+| Гнучкість     | Обмежена: можна анімувати тільки кінцевий стан  | Висока: можна задавати проміжні стани через @keyframes |
+| Складність    | Просте використання                             | Підходить для складних, багатоетапних анімацій         |
+
+#### Приклад transition:
+
+```css
+button {
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: red;
+}
+```
+
+#### Приклад animation:
+
+```css
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+div {
+  animation: bounce 1s infinite;
+}
+```
+
+#### Коротко:
+
+- **transition** – для простих ефектів при зміні стану;
+
+- **animation** – для складних, циклічних анімацій.
+
+</details>
+
+<details>
+<summary>64. Як створювати анімації за допомогою JavaScript у Vue.js?</summary>
+
+#### Vue.js
+
+У Vue.js можна використовувати JavaScript hooks у <transition> або
+<transition-group>, замість CSS-класів. Це дозволяє анімувати властивості вручну
+через JS.
+
+#### Приклад (Vue 3, Composition API):
+
+```html
+<template>
+  <button @click="show = !show">Toggle</button>
+  <transition @before-enter="beforeEnter" @enter="enter" @leave="leave">
+    <p v-if="show">Hello Vue!</p>
+  </transition>
+</template>
+
+<script setup>
+  import { ref } from 'vue';
+
+  const show = ref(false);
+
+  function beforeEnter(el) {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(-20px)';
+  }
+
+  function enter(el, done) {
+    const animation = el.animate(
+      [
+        { opacity: 0, transform: 'translateY(-20px)' },
+        { opacity: 1, transform: 'translateY(0)' },
+      ],
+      {
+        duration: 500,
+      }
+    );
+    animation.onfinish = done;
+  }
+
+  function leave(el, done) {
+    const animation = el.animate(
+      [
+        { opacity: 1, transform: 'translateY(0)' },
+        { opacity: 0, transform: 'translateY(-20px)' },
+      ],
+      { duration: 500 }
+    );
+    animation.onfinish = done;
+  }
+</script>
+```
+
+#### Особливості:
+
+- `@before-enter`, `@enter`, `@leave` – основні хуки для JS-анімацій.
+
+- `done` викликається після завершення анімації, щоб Vue завершив перехід.
+
+- Можна використовувати **Web Animations API** або сторонні бібліотеки (GSAP,
+  Anime.js).
+
+</details>
+
+<details>
+<summary>65. Які JavaScript-хуки доступні у Vue.js для анімацій при вході і виході елемента?</summary>
+
+#### Vue.js
+
+У Vue.js для <transition> і <transition-group> доступні такі основні hooks для
+входу та виходу:
+
+**Hooks для входу (enter):**
+
+- `before-enter` – перед початком входу, елемент ще не доданий у DOM
+
+- `enter` – під час анімації входу
+
+- `after-enter` – після завершення входу
+
+- `enter-cancelled` – якщо анімація входу була скасована
+
+**Hooks для виходу (leave):**
+
+- `before-leave` – перед початком видалення елемента
+
+- `leave` – під час анімації видалення
+
+- `after-leave` – після завершення видалення
+
+- `leave-cancelled` – якщо анімація видалення була скасована
+
+**Приклад використання:**
+
+```html
+<transition
+  @before-enter="beforeEnter"
+  @enter="enter"
+  @after-enter="afterEnter"
+  @before-leave="beforeLeave"
+  @leave="leave"
+  @after-leave="afterLeave"
+>
+  <p v-if="show">Hello Vue!</p>
+</transition>
+```
+
+- В JS-анімаціях обов’язково викликати `done()` у хук `enter/leave` після
+  завершення анімації.
+
+- Hooks дають повний контроль над анімацією елементів через JS.
+
+</details>
+
+<details>
+<summary>66. Які найкращі практики організації коду у великих Vue.js додатках?</summary>
+
+#### Vue.js
+
+1. Структура папок:
+
+- components/ – дрібні, повторно використовувані компоненти
+
+- views/ – сторінки (для Vue Router)
+
+- layouts/ – загальні макети
+
+- store/ – Vuex/Pinia модулі
+
+- services/ або api/ – запити до API
+
+- composables/ – повторно використовувані Composition API функції
+
+2. Компоненти:
+
+- Використовувати локальну реєстрацію, коли компонент специфічний для певного
+  модуля
+
+- Дотримуватись “Smart vs Dumb components” (контейнерні компоненти управляють
+  даними, презентаційні – відображення)
+
+3. Повторне використання логіки:
+
+- Використовувати composables замість mixins для Composition API
+
+- Виносити утиліти в окремі файли
+
+4. Стан додатку:
+
+- Використовувати Pinia або Vuex для глобального стану
+
+- Локальний стан зберігати у ref/reactive у компонентах
+
+5. Lazy loading і code splitting:
+
+- Динамічний імпорт для великих компонентів та маршрутів:
+
+```JavaScript
+const UserProfile = () => import('./views/UserProfile.vue')
+```
+
+6. Іменування:
+
+- PascalCase для компонентів: UserCard.vue
+
+- camelCase для методів і змінних у setup()
+
+7. Стилі:
+
+- Використовувати scoped CSS або CSS Modules
+
+- Для глобальних змінних – variables.scss
+
+8. Тестування:
+
+- Юніт-тести для компонентів і composables
+
+- E2E для критичних шляхів
+
+</details>
+
+<details>
+<summary>67. Чому атрибут key важливий при рендерингу списків у Vue.js?</summary>
+
+#### Vue.js
+
+Атрибут key допомагає Vue ідентифікувати кожен елемент списку при оновленні DOM.
+Це дозволяє ефективно перерендерювати тільки змінені елементи, а не весь список.
+
+#### Основні моменти:
+
+- Повинно бути унікальне значення для кожного елемента (id, наприклад).
+
+- Без key Vue використовує “in-place patching”, що може призвести до
+  неочікуваних перезаписів стану компонентів у списку.
+
+- З key Vue застосовує diffing алгоритм оптимально і правильно відслідковує
+  елементи.
+
+#### Приклад:
+
+```html
+<ul>
+  <li v-for="item in items" :key="item.id">{{ item.text }}</li>
+</ul>
+```
+
+#### Рекомендація:
+
+Використовувати стійкий і унікальний ідентифікатор, а не індекс масиву, особливо
+якщо список може змінюватися.
+
+</details>
+
+<details>
+<summary>68. Як структурувати компоненти у великому Vue.js додатку для масштабованості та підтримуваності?</summary>
+
+#### Vue.js
+
+1. Створювати ієрархію “глобальні → модульні → локальні”:
+
+- `components`/ – маленькі повторно використовувані компоненти (кнопки, інпути)
+
+- `modules`/`<module-name>`/`components`/ – компоненти специфічні для модуля
+
+- `views`/ – сторінки для Vue Router
+
+2. “Smart vs Dumb components” (Container / Presentational pattern):
+
+- Контейнерні (Smart) – управляють даними, викликають API, обробляють логіку
+
+- Презентаційні (Dumb) – отримують дані через props і рендерять UI
+
+3. Компоненти за призначенням:
+
+- Повторно використовувані UI-компоненти – маленькі, незалежні
+
+- Вузькоспеціалізовані – для конкретного модуля або сторінки
+
+4. Повторне використання логіки:
+
+- Виносити функції у composables (Composition API)
+
+- Використовувати mixins тільки у Vue 2
+
+5. Файлова структура приклад:
+
+```bash
+src/
+  components/      # глобальні UI-компоненти
+  composables/     # повторно використовувана логіка
+  modules/
+    user/
+      components/  # компоненти модуля
+      views/
+      store/       # модуль стану
+  views/           # сторінки для маршрутизатора
+  layouts/         # загальні макети
+  services/        # API або утиліти
+```
+
+6. Іменування:
+
+- PascalCase для компонентів: `UserCard.vue`
+
+- camelCase для змінних і функцій у `setup()`
+
+7. Lazy loading компонентів і маршрутів для швидкого завантаження.
+
+</details>
+
+<details>
+<summary>69. Чому важливо уникати використання this у шаблонних виразах Vue.js?</summary>
+
+#### Vue.js
+
+1. У Vue 3 (Composition API) this не працює у шаблоні:
+
+- В `setup()` немає контексту компонента, тому звертання через `this` призведе
+  до помилки.
+
+- Дані потрібно повертати з `setup()` і використовувати напряму:
+
+```html
+<template>
+  <p>{{ count }}</p>
+  <!-- правильно -->
+  <!-- <p>{{ this.count }}</p> -- неправильно -->
+</template>
+<script setup>
+  import { ref } from 'vue';
+  const count = ref(0);
+</script>
+```
+
+2. Vue 2 (Options API):
+
+- `this` у шаблоні все ще працює, але не потрібно, бо шаблон автоматично
+  прив’язаний до даних, props і computed.
+
+- Використання `this` у шаблоні робить код менш чистим і зрозумілим.
+
+3. Переваги уникання this:
+
+- Чіткість коду
+
+- Менше помилок при міграції на Composition API
+
+- Легше тестувати компоненти
+
+</details>
+
+<details>
+<summary>70. Як робити методи у Vue.js читаємими та компактними?</summary>
+
+#### Vue.js
+
+1. Розділяти логіку на невеликі функції:
+
+- Замість одного великого методу робіть кілька маленьких допоміжних функцій у
+  `methods` або `composables`.
+
+2. Виносити повторювану логіку у composables або утиліти:
+
+```JavaScript
+// composables/useFormat.js
+export function formatDate(date) {
+  return new Date(date).toLocaleDateString()
+}
+```
+
+3. Використовувати computed для похідних значень:
+
+- Щоб не писати багато логіки у шаблоні або методах, обчислюйте значення у
+  `computed`.
+
+4. Структурувати методи за призначенням:
+
+- Наприклад: `fetchData`, `handleClick`, `validateForm` – зрозумілі назви.
+
+5. Використовувати async/await для асинхронних операцій:
+
+- Код легше читати, ніж через `.then()`/`.catch()`.
+
+6. Коментувати лише складні ділянки логіки:
+
+- Не варто коментувати очевидні речі, щоб не перевантажувати методи.
+
+</details>
+
+<details>
+<summary>71. ???</summary>
 
 #### Vue.js
 
