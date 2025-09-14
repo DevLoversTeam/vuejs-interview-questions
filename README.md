@@ -3165,11 +3165,36 @@ export default {
 </details>
 
 <details>
-<summary>85. ???</summary>
+<summary>85. Як у Vue.js застосунку реалізувати аутентифікацію?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+Типовий підхід — JWT-токени + Vue Router guard.
+
+- При логіні бекенд повертає accessToken (короткоживучий) і refreshToken.
+
+- Токен зберігають у localStorage або httpOnly cookie.
+
+- Перед переходом на захищені маршрути виконується router.beforeEach, який
+  перевіряє, чи є токен.
+
+- Для запитів до API додаємо Authorization: Bearer <token> через Axios
+  інтерцептор.
+
+- Якщо токен прострочений — використовуємо refreshToken.
+
+Приклад (Vue Router guard):
+
+```JavaScript
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!localStorage.getItem('accessToken')
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next('/login')
+  } else {
+    next()
+  }
+})
+```
 
 </details>
 
