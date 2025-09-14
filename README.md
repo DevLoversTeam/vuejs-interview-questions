@@ -1966,20 +1966,113 @@ Vue.js має вбудовану систему для плавних встав
 </details>
 
 <details>
-<summary>62. ???</summary>
+<summary>62. Як застосувати анімацію/переходи до списку елементів у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+Для списків використовується компонент <transition-group>, який дозволяє
+анімувати вставку, видалення або переміщення елементів у списку.
+
+#### Приклад:
+
+```html
+<template>
+  <button @click="addItem">Add Item</button>
+  <transition-group name="list" tag="ul">
+    <li v-for="item in items" :key="item.id">{{ item.text }}</li>
+  </transition-group>
+</template>
+
+<script setup>
+  import { ref } from 'vue';
+
+  const items = ref([
+    { id: 1, text: 'Item 1' },
+    { id: 2, text: 'Item 2' },
+  ]);
+
+  function addItem() {
+    const id = items.value.length + 1;
+    items.value.push({ id, text: `Item ${id}` });
+  }
+</script>
+
+<style>
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.5s;
+  }
+  .list-enter-from,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .list-enter-to,
+  .list-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+```
+
+#### Особливості:
+
+- Кожен елемент повинен мати унікальний key.
+
+- `<transition-group>` автоматично додає CSS-класи для етапів enter та leave.
+
+- Можна анімувати позицію, opacity, масштаб або застосовувати
+  JavaScript-анімації.
 
 </details>
 
 <details>
-<summary>63. ???</summary>
+<summary>63. У чому різниця між CSS transitions і CSS animations?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+| Властивість   | CSS Transitions                                 | CSS Animations                                         |
+| ------------- | ----------------------------------------------- | ------------------------------------------------------ |
+| Запуск        | Відбувається при зміні стану (hover, class, JS) | Запускається автоматично або через keyframes           |
+| Контроль часу | Один раз на подію                               | Можна повторювати (infinite), задавати затримки, цикли |
+| Гнучкість     | Обмежена: можна анімувати тільки кінцевий стан  | Висока: можна задавати проміжні стани через @keyframes |
+| Складність    | Просте використання                             | Підходить для складних, багатоетапних анімацій         |
+
+#### Приклад transition:
+
+```css
+button {
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: red;
+}
+```
+
+#### Приклад animation:
+
+```css
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+div {
+  animation: bounce 1s infinite;
+}
+```
+
+#### Коротко:
+
+- **transition** – для простих ефектів при зміні стану;
+
+- **animation** – для складних, циклічних анімацій.
 
 </details>
 
