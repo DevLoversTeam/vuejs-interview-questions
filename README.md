@@ -3429,11 +3429,48 @@ CMS).
 </details>
 
 <details>
-<summary>92. ???</summary>
+<summary>92. Чим відрізняється Composition API від Options API у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+- Options API (Vue 2 стиль) – логіка компонента описується через секції (data,
+  methods, computed, watch). Код однієї фічі може бути розкиданий по різних
+  блоках.
+
+- Composition API (Vue 3) – логіка організована в setup() з використанням ref,
+  reactive, computed, watch. Код однієї фічі зберігається разом, легше реюзати
+  через "composition functions".
+
+- TypeScript підтримка – краща у Composition API.
+
+- Читабельність у великих компонентах – легше підтримувати з Composition API.
+
+#### Приклад Options API:
+
+```JavaScript
+export default {
+  data() {
+    return { count: 0 }
+  },
+  methods: {
+    increment() { this.count++ }
+  }
+}
+```
+
+#### Приклад Composition API:
+
+```html
+<script setup>
+  import { ref } from 'vue';
+  const count = ref(0);
+  const increment = () => count.value++;
+</script>
+
+<template>
+  <button @click="increment">{{ count }}</button>
+</template>
+```
 
 </details>
 
