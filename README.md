@@ -1476,7 +1476,120 @@ Vue вже добре оптимізований «з коробки», але �
 </details>
 
 <details>
-<summary>51. ???</summary>
+<summary>51. Що таке функціональні компоненти у Vue.js?</summary>
+
+#### Vue.js
+
+Функціональні компоненти — це легковагові компоненти без стану (data) та
+життєвого циклу, які рендеряться швидше, бо вони просто функція, яка повертає
+VNode. Використовуються для простих, презентаційних компонентів.
+
+- **Приклад (Vue 3, Composition API):**
+
+```JavaScript
+// FunctionalComponent.vue
+export default {
+  functional: true,
+  props: {
+    text: String
+  },
+  render(h, ctx) {
+    return h('p', ctx.props.text)
+  }
+}
+```
+
+- **У Vue 3 часто просто пишуть як функцію:**
+
+```JavaScript
+const FunctionalComponent = (props) => h('p', props.text)
+```
+
+</details>
+
+<details>
+<summary>52. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>53. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>54. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>55. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>56. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>57. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>58. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>59. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>60. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>61. ???</summary>
 
 #### Vue.js
 
