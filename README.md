@@ -3594,11 +3594,59 @@ div.
 </details>
 
 <details>
-<summary>96. ???</summary>
+<summary>96. Як керувати глобальним станом у великому Vue.js додатку без використання Vuex?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+У Vue 3 можна керувати глобальним станом без Vuex за допомогою Pinia або
+нативного Composition API:
+
+1. Pinia – офіційна заміна Vuex, легка, TypeScript-friendly.
+
+```JavaScript
+// stores/counter.js
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+  const increment = () => count.value++
+  return { count, increment }
+})
+```
+
+```html
+<script setup>
+  import { useCounterStore } from '@/stores/counter';
+  const counter = useCounterStore();
+</script>
+<template>
+  <button @click="counter.increment">{{ counter.count }}</button>
+</template>
+```
+
+2. Composition API / reactive singleton
+
+```JavaScript
+// store.js
+import { reactive } from 'vue'
+export const store = reactive({ count: 0 })
+export const increment = () => store.count++
+```
+
+```html
+<script setup>
+  import { store, increment } from './store.js';
+</script>
+<template>
+  <button @click="increment">{{ store.count }}</button>
+</template>
+```
+
+- Підхід з Composition API простий для невеликих проєктів.
+
+- Pinia кращий для великих додатків через modular stores, devtools і TypeScript
+  підтримку.
 
 </details>
 
