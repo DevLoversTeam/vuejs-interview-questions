@@ -2429,7 +2429,318 @@ export function formatDate(date) {
 </details>
 
 <details>
-<summary>71. ???</summary>
+<summary>71. Як писати юніт-тести для Vue.js компонентів?</summary>
+
+#### Vue.js
+
+1. **Інструменти:**
+
+- Vue Test Utils – офіційна бібліотека для рендерингу компонентів
+
+- Jest / Vitest – тестовий раннер
+
+2. **Основні кроки:**
+
+- Імпортувати компонент
+
+- Відрендерити його у тестовому середовищі (mount або shallowMount)
+
+- Перевірити рендеринг, реактивність, події та computed
+
+3. **Приклад (Vue 3 + Vitest + Vue Test Utils):**
+
+```JavaScript
+import { mount } from '@vue/test-utils'
+import { describe, it, expect } from 'vitest'
+import Counter from '../Counter.vue'
+
+describe('Counter.vue', () => {
+  it('renders initial count', () => {
+    const wrapper = mount(Counter)
+    expect(wrapper.text()).toContain('Count: 0')
+  })
+
+  it('increments count when button is clicked', async () => {
+    const wrapper = mount(Counter)
+    await wrapper.find('button').trigger('click')
+    expect(wrapper.text()).toContain('Count: 1')
+  })
+})
+```
+
+4. **Поради:**
+
+- Використовувати shallowMount для ізоляції компонентів
+
+- Тестувати props, events, computed і методи
+
+- Для асинхронних операцій – await nextTick()
+
+</details>
+
+<details>
+<summary>72. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>73. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>74. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>75. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>76. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>77. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>78. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>79. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>80. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>81. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>82. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>83. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>84. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>85. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>86. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>87. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>88. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>89. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>90. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>91. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>92. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>93. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>94. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>95. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>96. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>97. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>98. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>99. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>100. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>101. ???</summary>
 
 #### Vue.js
 
