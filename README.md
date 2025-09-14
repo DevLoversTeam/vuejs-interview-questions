@@ -2659,11 +2659,52 @@ test('fetchData commits data', async () => {
 </details>
 
 <details>
-<summary>76. ???</summary>
+<summary>76. Як створити плагін у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+Плагін у Vue.js — це об’єкт або функція, яка додає глобальну функціональність
+(методи, директиви, компоненти) у додаток.
+
+#### Створення плагіна (Vue 3):
+
+```JavaScript
+// myPlugin.js
+export default {
+  install(app, options) {
+    // Додаємо глобальний метод
+    app.config.globalProperties.$log = (msg) => console.log(msg)
+
+    // Додаємо глобальну директиву
+    app.directive('focus', {
+      mounted(el) { el.focus() }
+    })
+
+    // Можна також додати глобальні компоненти
+    // app.component('MyButton', MyButtonComponent)
+  }
+}
+```
+
+#### Підключення плагіна:
+
+```JavaScript
+import { createApp } from 'vue'
+import App from './App.vue'
+import MyPlugin from './myPlugin'
+
+const app = createApp(App)
+app.use(MyPlugin, { someOption: true })
+app.mount('#app')
+```
+
+#### Особливості:
+
+- Плагін повинен мати метод install.
+
+- Через app.use() можна передавати параметри.
+
+- Використовується для глобальної логіки, директив, компонентів або утиліт.
 
 </details>
 
