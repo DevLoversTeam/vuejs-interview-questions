@@ -3352,11 +3352,37 @@ Vue додає спеціальні атрибути до елементів і 
 </details>
 
 <details>
-<summary>90. ???</summary>
+<summary>90. Поясніть призначення custom blocks у Vue Single File Components (SFC).</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+**Custom blocks** — це додаткові секції в .vue файлі, які не входять у
+стандартні `<template>`, `<script>` чи `<style>`. Вони використовуються для
+метаданих, документації або специфічних інструментів (наприклад, тестів, i18n,
+CMS).
+
+Приклад:
+
+```html
+<template>
+  <div>{{ message }}</div>
+</template>
+
+<script setup>
+  import { ref } from 'vue';
+  const message = ref('Hello Vue');
+</script>
+
+<docs> This component displays a simple message. </docs>
+
+<i18n>
+  { "en": { "message": "Hello Vue" }, "fr": { "message": "Bonjour Vue" } }
+</i18n>
+```
+
+- Custom blocks обробляються через loader/плагіни у збірці (Webpack, Vite).
+
+- Vue їх сам по собі не інтерпретує — вони для сторонніх інструментів.
 
 </details>
 
