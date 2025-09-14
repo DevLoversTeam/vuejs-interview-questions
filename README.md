@@ -1636,11 +1636,40 @@ export default {
 </details>
 
 <details>
-<summary>55. ???</summary>
+<summary>55. Що таке компоненти вищого порядку (Higher-Order Components) у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+Компонент вищого порядку (HOC) — це функція, яка приймає компонент як аргумент і
+повертає новий компонент з додатковою логікою або поведінкою. Використовується
+для повторного використання логіки без зміни оригінального компонента.
+
+#### Приклад (Vue 3, Composition API):
+
+```JavaScript
+// withLogger.js
+export function withLogger(WrappedComponent) {
+  return {
+    setup(props, ctx) {
+      console.log('Component rendered')
+      return () => h(WrappedComponent, props, ctx.slots)
+    }
+  }
+}
+
+// Usage
+import MyComponent from './MyComponent.vue'
+import { withLogger } from './withLogger'
+
+export default withLogger(MyComponent)
+```
+
+#### Особливості:
+
+- HOC не змінює оригінальний компонент.
+
+- Використовують для логування, авторизації, обробки помилок або повторного
+  UI-поведінки.
 
 </details>
 
