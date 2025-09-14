@@ -4,6 +4,8 @@
 
 <h2>Найпопулярніші запитання та відповіді на співбесіді з Vue.js</h2>
 
+### Основи Vue.js
+
 <details>
 <summary>1. Що таке Vue.js і чому його варто використовувати?</summary>
 
@@ -198,6 +200,8 @@ export default {
 
 </details>
 
+### Прив’язка даних та обчислювані властивості у Vue.js
+
 <details>
 <summary>11. У чому різниця між v-bind і v-model у Vue.js?</summary>
 
@@ -326,6 +330,8 @@ export default {
 ```
 
 </details>
+
+### Компоненти та властивості (Props) у Vue.js
 
 <details>
 <summary>16. Як у Vue.js передавати дані до дочірнього компонента за допомогою props?</summary>
@@ -477,6 +483,8 @@ export default {
 
 </details>
 
+### Події та їх обробка у Vue.js
+
 <details>
 <summary>21. Як у Vue.js обробляти нативні події DOM?</summary>
 
@@ -621,6 +629,8 @@ emits: ['increment'];
 
 </details>
 
+### Директиви та функції рендерингу у Vue.js
+
 <details>
 <summary>26. Для чого використовуються директиви v-if та v-for у Vue.js?</summary>
 
@@ -750,6 +760,8 @@ export default {
 
 </details>
 
+### Управління станом у Vue.js за допомогою Vuex
+
 <details>
 <summary>31. Що таке Vuex і для чого він використовується?</summary>
 
@@ -875,6 +887,8 @@ Vuex базується на таких ключових концепціях:
 - Actions = бізнес-логіка + асинхронність
 
 </details>
+
+### Маршрутизація у Vue.js за допомогою Vue Router
 
 <details>
 <summary>36. Що таке Vue Router і для чого він використовується?</summary>
@@ -1086,6 +1100,8 @@ export default router;
 пости.
 
 </details>
+
+### Міксіни та власні директиви у Vue.js
 
 <details>
 <summary>41. Що таке mixins у Vue.js і як їх використовують?</summary>
@@ -1300,6 +1316,8 @@ app.directive('focus', {
 
 </details>
 
+### Інструменти та управління проєктом у Vue.js
+
 <details>
 <summary>46. Що таке Vue CLI і які його можливості?</summary>
 
@@ -1474,6 +1492,8 @@ console.log(import.meta.env.VITE_API_URL)
 Vue вже добре оптимізований «з коробки», але ці кроки потрібні для великих SPA.
 
 </details>
+
+### Розширене використання компонентів
 
 <details>
 <summary>51. Що таке функціональні компоненти у Vue.js?</summary>
@@ -1672,6 +1692,8 @@ export default withLogger(MyComponent)
   UI-поведінки.
 
 </details>
+
+### Система реактивності у Vue.js
 
 <details>
 <summary>56. Що таке реактивність у Vue.js і як вона працює?</summary>
@@ -1904,6 +1926,8 @@ export default {
 - Використовується для двостороннього зв’язку (v-model) на computed.
 
 </details>
+
+### Переходи та анімації у Vue.js
 
 <details>
 <summary>61. Як Vue.js обробляє анімації та переходи (transitions)?</summary>
@@ -2192,6 +2216,8 @@ div {
 
 </details>
 
+### Найкращі практики у Vue.js
+
 <details>
 <summary>66. Які найкращі практики організації коду у великих Vue.js додатках?</summary>
 
@@ -2428,6 +2454,8 @@ export function formatDate(date) {
 
 </details>
 
+### Тестування та відлагодження у Vue.js
+
 <details>
 <summary>71. Як писати юніт-тести для Vue.js компонентів?</summary>
 
@@ -2657,6 +2685,8 @@ test('fetchData commits data', async () => {
 - Не рендерити компонент, якщо хочете тестувати тільки логику store
 
 </details>
+
+### Плагіни та розширення функціональності Vue.js
 
 <details>
 <summary>76. Як створити плагін у Vue.js?</summary>
@@ -2938,6 +2968,8 @@ app.mount('#app')
 
 </details>
 
+### Інтеграція з бекенд-сервісами
+
 <details>
 <summary>81. Як організувати роботу з API-запитами у Vue.js?</summary>
 
@@ -3198,6 +3230,8 @@ router.beforeEach((to, from, next) => {
 
 </details>
 
+### Однофайлові компоненти Vue.js (SFC)
+
 <details>
 <summary>86. Що таке Single File Component (SFC) у Vue.js?</summary>
 
@@ -3385,6 +3419,8 @@ CMS).
 - Vue їх сам по собі не інтерпретує — вони для сторонніх інструментів.
 
 </details>
+
+### Особливості та зміни у Vue.js 3.x
 
 <details>
 <summary>91. Які нові можливості були додані у Vue.js 3?</summary>
@@ -3592,6 +3628,8 @@ div.
 - Легше управляти вкладеними слотами і передавати дані.
 
 </details>
+
+### Найкращі практики для масштабних застосунків на Vue.js
 
 <details>
 <summary>96. Як керувати глобальним станом у великому Vue.js додатку без використання Vuex?</summary>
