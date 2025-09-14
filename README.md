@@ -1551,11 +1551,43 @@ export default {
 </details>
 
 <details>
-<summary>53. ???</summary>
+<summary>53. Як відбувається реєстрація компонентів у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+У Vue.js компоненти можна реєструвати глобально або локально:
+
+1. Глобальна реєстрація – компонент доступний у всіх компонентах додатку:
+
+```JavaScript
+import { createApp } from 'vue'
+import App from './App.vue'
+import MyComponent from './components/MyComponent.vue'
+
+const app = createApp(App)
+app.component('MyComponent', MyComponent)
+app.mount('#app')
+```
+
+2. Локальна реєстрація – компонент доступний тільки в межах конкретного
+   компонента:
+
+```JavaScript
+import MyComponent from './components/MyComponent.vue'
+
+export default {
+  components: {
+    MyComponent
+  },
+  template: `<MyComponent />`
+}
+```
+
+#### Примітки:
+
+- Глобальна реєстрація зручна для часто використовуваних компонентів.
+
+- Локальна зменшує розмір бандлу при lazy loading.
 
 </details>
 
