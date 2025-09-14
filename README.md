@@ -2821,20 +2821,120 @@ onBeforeUnmount(() => {
 </details>
 
 <details>
-<summary>79. ???</summary>
+<summary>79. Як глобально підключити Vue mixin?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+1. **Що таке mixin:**
+
+- Mixin містить повторно використовувану логіку (data, methods, lifecycle
+  hooks), яку можна підключати до компонентів.
+
+2. **Vue 2 – глобальне підключення:**
+
+```JavaScript
+// myMixin.js
+export const myMixin = {
+  data() {
+    return { mixinMessage: 'Hello from mixin' }
+  },
+  methods: {
+    greet() {
+      console.log(this.mixinMessage)
+    }
+  }
+}
+
+// main.js
+import Vue from 'vue'
+import { myMixin } from './myMixin'
+
+Vue.mixin(myMixin)  // тепер всі компоненти отримають mixin
+```
+
+3. **Vue 3 – глобальне підключення:**
+
+```JavaScript
+import { createApp } from 'vue'
+import App from './App.vue'
+import { myMixin } from './myMixin'
+
+const app = createApp(App)
+app.mixin(myMixin)
+app.mount('#app')
+```
+
+#### Особливості:
+
+- Глобальний mixin застосовується до всіх компонентів, тому використовувати його
+  обережно, щоб уникнути конфліктів.
+
+- Для повторного використання краще також розглядати composables (Composition
+  API), які більш контрольовані та локальні.
 
 </details>
 
 <details>
-<summary>80. ???</summary>
+<summary>80. Що таке Vue.js mixins і як створити глобальний mixin?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+1. **Що таке mixin:**
+
+- Mixin — це об’єкт, який містить повторно використовувану логіку (data,
+  methods, computed, lifecycle hooks).
+
+- Компоненти, що підключають mixin, отримують цю логіку автоматично.
+
+2. **Приклад локального mixin:**
+
+```JavaScript
+// myMixin.js
+export const myMixin = {
+  data() {
+    return { message: 'Hello from mixin' }
+  },
+  methods: {
+    greet() {
+      console.log(this.message)
+    }
+  }
+}
+
+// Використання у компоненті
+import { myMixin } from './myMixin'
+export default {
+  mixins: [myMixin],
+  mounted() {
+    this.greet()
+  }
+}
+```
+
+3. **Глобальний mixin:**
+
+- Підключається у всіх компонентах через app.mixin() (Vue 3) або Vue.mixin()
+  (Vue 2).
+
+#### Vue 3 приклад:
+
+```JavaScript
+import { createApp } from 'vue'
+import App from './App.vue'
+import { myMixin } from './myMixin'
+
+const app = createApp(App)
+app.mixin(myMixin)  // застосовується до всіх компонентів
+app.mount('#app')
+```
+
+#### Особливості:
+
+- Використовуйте глобальні mixins обережно, щоб уникнути конфліктів і
+  непередбачуваних ефектів.
+
+- Для локального повторного використання краще застосовувати composables у
+  Vue 3.
 
 </details>
 
