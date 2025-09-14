@@ -3199,11 +3199,43 @@ router.beforeEach((to, from, next) => {
 </details>
 
 <details>
-<summary>86. ???</summary>
+<summary>86. Що таке Single File Component (SFC) у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+SFC — це компонент Vue в одному файлі з розширенням .vue, який містить три
+основні секції:
+
+- `<template>` — розмітка,
+
+- `<script>` — логіка,
+
+- `<style>` — стилі (можуть бути scoped).
+
+Це зручно, бо вся логіка, HTML і CSS компонента зберігається разом.
+
+#### Приклад:
+
+```html
+<template>
+  <button @click="count++">Clicked {{ count }} times</button>
+</template>
+
+<script>
+  export default {
+    data() {
+      return { count: 0 };
+    },
+  };
+</script>
+
+<style scoped>
+  button {
+    background: #42b983;
+    color: white;
+  }
+</style>
+```
 
 </details>
 
