@@ -1862,11 +1862,46 @@ class Dep {
 </details>
 
 <details>
-<summary>60. ???</summary>
+<summary>60. Як створити обчислювану властивість (computed) з сеттером у Vue.js?</summary>
 
 #### Vue.js
 
-- Coming soon...😎
+У Vue можна створити computed з гетером і сеттером, щоб не тільки читати
+значення, а й реагувати на його зміну.
+
+#### Приклад (Vue 3, Composition API):
+
+```JavaScript
+import { ref, computed } from 'vue'
+
+export default {
+  setup() {
+    const firstName = ref('Andriy')
+    const lastName = ref('Motko')
+
+    const fullName = computed({
+      get() {
+        return `${firstName.value} ${lastName.value}`
+      },
+      set(value) {
+        const names = value.split(' ')
+        firstName.value = names[0]
+        lastName.value = names[1] || ''
+      }
+    })
+
+    return { firstName, lastName, fullName }
+  }
+}
+```
+
+#### Особливості:
+
+- **Getter** повертає обчислене значення.
+
+- **Setter** дозволяє оновлювати залежні змінні при зміні computed.
+
+- Використовується для двостороннього зв’язку (v-model) на computed.
 
 </details>
 
