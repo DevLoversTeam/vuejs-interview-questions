@@ -1906,7 +1906,148 @@ export default {
 </details>
 
 <details>
-<summary>61. ???</summary>
+<summary>61. Як Vue.js обробляє анімації та переходи (transitions)?</summary>
+
+#### Vue.js
+
+Vue.js має вбудовану систему для плавних вставок, видалень і зміни стану
+елементів через компонент `<transition>` і `<transition-group>`.
+
+#### Основні моменти:
+
+1. `<transition>` – для одного елемента чи компонента.
+
+2. `<transition-group>` – для списків і груп елементів.
+
+3. Vue автоматично додає CSS-класи на різних етапах анімації:
+
+- `v-enter`, `v-enter-active`, `v-enter-to`
+
+- `v-leave`, `v-leave-active`, `v-leave-to`
+
+#### Приклад:
+
+```html
+<template>
+  <transition name="fade">
+    <p v-if="show">Hello Vue!</p>
+  </transition>
+</template>
+
+<script setup>
+  import { ref } from 'vue';
+  const show = ref(true);
+</script>
+
+<style>
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-enter-to,
+  .fade-leave-from {
+    opacity: 1;
+  }
+</style>
+```
+
+#### Особливості:
+
+- Можна використовувати CSS-анімації або JavaScript hooks (beforeEnter, enter,
+  leave тощо).
+
+- `<transition-group>` додає анімацію для списків з ключами (key) для коректного
+  відстеження елементів.
+
+</details>
+
+<details>
+<summary>62. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>63. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>64. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>65. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>66. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>67. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>68. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>69. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>70. ???</summary>
+
+#### Vue.js
+
+- Coming soon...😎
+
+</details>
+
+<details>
+<summary>71. ???</summary>
 
 #### Vue.js
 
